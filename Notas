@@ -1,0 +1,33 @@
+Como no uso visual studio debo ejecutar los comandos del Nuget Manager Console por medio de dotnet-ef
+
+Para poder usar el Nuget Manager console primero debo ejecutar lo siguiente dentro de la carpeta del proyecto
+Before you can use the tools on a specific project, you'll need to add the Microsoft.EntityFrameworkCore.Design package to it.
+	dotnet add package Microsoft.EntityFrameworkCore.Design
+
+Para hacer la migracion para crear la BD ejecuto
+	dotnet ef migrations add Initial
+		Donde Initial es el nombre de la migracion
+	El comando en el Nuget Managment Console es
+		Add-Migration Initial
+
+Las migraciones quedan alojadas en la carpeta Migrations
+
+Para crear la migracion se ejecuta
+	dotnet ef database update
+	El comando en el Nuget Managment Console es
+		Update-Database
+	
+	
+*********************************
+IMPORTANTE: PASSWORD USUARIO SA
+*********************************
+El comando dotnet ef database update falla porque el usuario SA inicialmente tiene vacía la contraseña. Se debe asignar una contraseña ejecutando el siguiente SP dentro de la BD master
+	EXEC sp_password NULL,'g4rb3r1chsql*','sa'
+	
+	
+
+
+*****************
+LIBRO
+*****************
+https://b-ok.lat/book/6158894/b583cc?id=6158894&secret=b583cc&dsource=recommend
